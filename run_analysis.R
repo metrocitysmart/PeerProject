@@ -144,7 +144,7 @@ humanActvtyData <- data.frame(
            totAccZ=mat_totalAccZ
            )
 
-write.table(humanActvtyData, "finalDataset.txt", row.names = FALSE)
+write.table(humanActvtyData, "finalDataset.txt", row.name = FALSE)
 
 # column names of measurements corresponding the mean and standard deviation
 # measurements
