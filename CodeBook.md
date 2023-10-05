@@ -67,4 +67,4 @@ together adds up to 1715 variables. After combining train and test data there
 are 10,299 observations for each of these 1715 variables.
 
 The units for body acceleration values and total acceleration values is 'g'
-The unit for body angular velocity is radians/sec.
+The unit for body angular velocity values is radians/sec.
