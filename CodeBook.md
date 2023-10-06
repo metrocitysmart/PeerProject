@@ -18,53 +18,52 @@ project.
 |   so on up to  | previous study.                                          |
 | *feat.FTR561*  |                                                          |
 |                |                                                          |
-| *bodyAccX.S1*, | 128 signals data recorded for body acceleration in the X |
-| *bodyAccX.S2*, | direction.                                               |
-| so on up to    |                                                          |
+| *bodyAccX.S1*, | The mean of each of 128 variables/columns for body       |
+| *bodyAccX.S2*, | acceleration in the X direction grouped by subject and   |
+| so on up to    | activity.                                                |
 |*bodyAccX.S128* |                                                          |
 |                |                                                          |
-| *bodyAccY.S1*, | 128 signals data recorded for body acceleration in the Y |
-| *bodyAccY.S2*, | direction.                                               |
-| so on up to    |                                                          |
+| *bodyAccY.S1*, | The mean of each of 128 variables/columns for body       |
+| *bodyAccY.S2*, | acceleration in the Y direction grouped by subject and   |
+| so on up to    | activity.                                                |
 |*bodyAccY.S128* |                                                          |
 |                |                                                          |
-| *bodyAccZ.S1*, | 128 signals data recorded for body acceleration in the Z |
-| *bodyAccZ.S2*, | direction.                                               |
-| so on up to    |                                                          |
+| *bodyAccZ.S1*, | The mean of each of 128 variables/columns for body       |
+| *bodyAccZ.S2*, | acceleration in the Z direction grouped by subject and   |
+| so on up to    | activity.                                                |
 |*bodyAccZ.S128* |                                                          |
 |                |                                                          |
-| *bodyGyX.S1*,  | 128 signals data recorded for body angular velocity in   |
-| *bodyGyX.S2*,  | the X direction.                                         |
-| so on up to    |                                                          |
+| *bodyGyX.S1*,  | Mean of each of 128 variables/columns for body angular   |
+| *bodyGyX.S2*,  | velocity in the X direction grouped by subject and       |
+| so on up to    | activity.                                                |
 | *bodyGyX.S128* |                                                          |
 |                |                                                          |
-| *bodyGyY.S1*,  | 128 signals data recorded for body angular velocity in   |
-| *bodyGyY.S2*,  | the Y direction.                                         |
-| so on up to    |                                                          |
+| *bodyGyY.S1*,  | Mean of each of 128 variables/columns for body angular   |
+| *bodyGyY.S2*,  | velocity in the Y direction grouped by subject and       |
+| so on up to    | activity.                                                |
 | *bodyGyY.S128* |                                                          |
 |                |                                                          |
-| *bodyGyZ.S1*,  | 128 signals data recorded for body angular velocity in   |
-| *bodyGyZ.S2*,  | the Z direction.                                         |
-| so on up to    |                                                          |
+| *bodyGyZ.S1*,  | Mean of each of 128 variables/columns for body angular   |
+| *bodyGyZ.S2*,  | velocity in the Z direction grouped by subject and       |
+| so on up to    | activity.                                                |
 | *bodyGyZ.S128* |                                                          |
 |                |                                                          |
-| *totAccX.S1*,  | 128 signals data estimated for body total acceleration   | 
-| *totAccX.S2*,  | in the X direction.                                      |
-| *totAccX.S128* |                                                          |
+| *totAccX.S1*,  | Mean of each of 128 variables/columns for total          | 
+| *totAccX.S2*,  | acceleration in the X direction grouped by subject and   |
+| *totAccX.S128* | activity.                                                |
 |                |                                                          |
-| *totAccY.S1*,  | 128 signals data estimated for body total acceleration   | 
-| *totAccY.S2*,  | in the Y direction.                                      |
-| so on up to    |                                                          |
+| *totAccY.S1*,  | Mean of each of 128 variables/columns for total          | 
+| *totAccY.S2*,  | acceleration in the Y direction grouped by subject and   |
+| so on up to    | activity.                                                |
 | *totAccY.S128* |                                                          |
 |                |                                                          |
-| *totAccZ.S1*,  | 128 signals data estimated for body total acceleration   | 
-| *totAccZ.S2*,  | in the Z direction.                                      |
-| so on up to    |                                                          |
+| *totAccZ.S1*,  | Mean of each of 128 variables/columns for total          | 
+| *totAccZ.S2*,  | acceleration in the Z direction grouped by subject and   |
+| so on up to    | activity.                                                |
 | *totAccZ.S128* |                                                          |
 
 Subject id and activity are 2 variables, measurements of 561 features i.e. 561 variables, body acceleration in three directions, body angular velocity in three directions and total acceleration in three directions, total 9 variables and 128 readings for each of nine variables giving a total of 1152 variables, all
-together adds up to 1715 variables. After combining train and test data there
-are 10,299 observations for each of these 1715 variables.
+together adds up to 1715 variables.
 
 The units for body acceleration values and total acceleration values is 'g'
 The unit for body angular velocity values is radians/sec.
