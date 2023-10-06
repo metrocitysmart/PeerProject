@@ -144,8 +144,6 @@ humanActvtyData <- data.frame(
            totAccZ=mat_totalAccZ
            )
 
-write.table(humanActvtyData, "finalDataset.txt", row.name = FALSE)
-
 # column names of measurements corresponding the mean and standard deviation
 # measurements
 extraction_colNames <- paste0("feat.FTR", extract_ind)
@@ -159,5 +157,5 @@ library(dplyr)
 hmnAct_subActvty <- humanActvtyData %>%
   group_by(sub, act) %>%
   summarize(across(everything(), mean))
-
-humanActvtyData
+write.table(hmnAct_subActvty, "finalDataset.txt", row.name = FALSE)
+hmnAct_subActvty
