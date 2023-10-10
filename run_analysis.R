@@ -36,11 +36,11 @@ for(i in 1:length(unique(y))) {
   y[y==su_y[i]] <- act$V2[i]
 }
 
-# reading the subject train and test sets and merging them as one dataset
+# reading the subject train and test sets and merging them as one data set
 subject <- combineTrainTest(path_train, path_test, "subject_train.txt",
                             "subject_test.txt", "integer")
 
-# extracting the measurements on mean and standard deviations
+# extracting the headers of measurements on mean and standard deviations
 cols <- setdiff(grep("mean|std", features, value = TRUE),
                 grep("meanFreq", features, value = TRUE))
 
@@ -50,4 +50,5 @@ library(dplyr)
 averages_df <- df %>%
   group_by(subject, activity) %>%
   summarize(across(everything(), mean))
+write.table(averages_df, "finalDataset.txt", row.name = FALSE)
 averages_df
