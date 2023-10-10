@@ -1,51 +1,53 @@
-# reading the column headers from the features.txt file
-features <- read.table("UCI HAR Dataset/features.txt", header = FALSE,
-                       colClasses = c("NULL", "character"))
-features <- features$V2
+# defining functions for reading data and combining train and test data
+readFile <- function(path, filename, classes) {
+  read.table(paste0(path, filename), header = FALSE, colClasses = classes)
+}
 
+combineTrainTest <- function(trainPath, testPath, trainFile, testFile,
+                             classes) {
+    train_data <- readFile(trainPath, trainFile, classes)
+    test_data <- readFile(testPath, testFile, classes)
+    data <- rbind(train_data, test_data)
+}
+
+# defining path variables
+path <- "UCI HAR Dataset/"
 path_test <- "UCI HAR Dataset/test/"
 path_train <- "UCI HAR Dataset/train/"
 
-readFile <- function(path, filename, classes) {
-    read.table(paste0(path, filename), header = FALSE, colClasses = classes)
-}
+# reading the column headers from the features.txt file
+features <- readFile(path, "features.txt", c("NULL", "character"))
+features <- features$V2
 
 # reading and train and test sets and merging them as one dataset
-x_train <- readFile(path_train, "X_train.txt", "numeric")
-x_test <- readFile(path_test, "X_test.txt", "numeric")
-X <- rbind(x_train, x_test)
+X <- combineTrainTest(path_train, path_test, "X_train.txt", "X_test.txt",
+                      "numeric")
 colnames(X) <- features
 
 # reading the activities train and test sets and merging them as one dataset
-y_train <- readFile(path_train, "y_train.txt", "character")
-y_test <- readFile(path_test, "y_test.txt", "character")
-y <- rbind(y_train, y_test)
+y <- combineTrainTest(path_train, path_test, "y_train.txt", "y_test.txt",
+                      "character")
 y <- y$V1
 
 # labeling the activities
-act <- read.table("UCI HAR Dataset/activity_labels.txt", header = FALSE,
-               colClasses = c("NULL", "character"))
-y[y=="1"] <- act$V2[1]
-y[y=="2"] <- act$V2[2]
-y[y=="3"] <- act$V2[3]
-y[y=="4"] <- act$V2[4]
-y[y=="5"] <- act$V2[5]
-y[y=="6"] <- act$V2[6]
-
-
+act <- readFile(path, "activity_labels.txt", c("NULL", "character"))
+su_y <- sort(unique(y))
+for(i in 1:length(unique(y))) {
+  y[y==su_y[i]] <- act$V2[i]
+}
 
 # reading the subject train and test sets and merging them as one dataset
-subject_train <- readFile(path_train, "subject_train.txt", "integer")
-subject_test <- readFile(path_test, "subject_test.txt", "integer")
-subject <- rbind(subject_train, subject_test)
-rm(x_test, x_train, y_test, y_train, subject_test, subject_train)
+subject <- combineTrainTest(path_train, path_test, "subject_train.txt",
+                            "subject_test.txt", "integer")
 
 # extracting the measurements on mean and standard deviations
 cols <- setdiff(grep("mean|std", features, value = TRUE),
                 grep("meanFreq", features, value = TRUE))
+
 
 df <- cbind(subject = subject$V1, activity = y, X[,cols])
 library(dplyr)
 averages_df <- df %>%
   group_by(subject, activity) %>%
   summarize(across(everything(), mean))
+averages_df
