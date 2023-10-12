@@ -97,33 +97,4 @@ the files for this project. The **UCI HAR Datasets** folder contains the
 files and **train** and **test** folders.  
 The _train_ folders contain the files **X_train.txt**, **y_train.txt**, **subject_train.txt** and the **Inertial Signals** folder. The _test_ folder
 contains the files **X_test.txt**, **y_test.txt**, **subject_test.txt** and
-**Inertial Signals** folder.  
-
-### work done
-Written two functions **readFile** and **combineTrainTest**.
-The *readFile* function reads in data by taking the arguments for path to a file, 
-the file name and a **classes** argument that takes the value for the
-**colClasses** argument for the *read.table* function.  
-The **combineTrainTest** function uses the _readFile_ function to read train
-data and test data and combine them both into a single data set.   
-Defined the path variables for _UCI HAR Datasets_ folder and also for _train_
-and _test_ folders within the above folder.  
-Read the contents of the _features.txt_ file into *features* variable. After
-reading the data converted the data frame into a character vector.  
-Read the contents of **X_train.txt** and **X_test.txt** and combined them into
-a single dataset **X**. Assigned the _features_ vector as the column names to
-the _X_ data set.  
-Read the contents of **y_train.txt** and **y_test.txt** files and combined them
-to a single data set **y**. The _y_ data set represents activities coded as
-integers. Read the **activity_labels.txt** file and assigned a label to each
-activity using a for loop.
-Read the **subject_train.txt** and **subject_test.txt** files from their
-respective _train_ and _test_ folders and combined them into a single data set
-**subject**.  
-Extracted the variables which correspond to the measurements of mean and
-standard deviations from _features_ as another character vector.  
-Defined a data frame **df** from _subject_, _y_ and _X_ data sets with _X_
-subset with the extracted variables. Finally defined another data set
-**df_averages** after grouping by subject and activities and taking the mean of
-all the other numeric columns.  
-Written the data set values to a text file and returned the final data set.
+**Inertial Signals** folder.
